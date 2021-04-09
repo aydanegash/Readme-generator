@@ -6,38 +6,58 @@ inquirer.prompt(
     [
         {
             type: 'input',
-            messages: '?',
-            name: 'title',
+            messages: 'What is your Project Title?',
+            name: 'Title',
+            validate: function
         }
 
         {
             type: 'input',
-            messages: '?',
-            name: 'title',
+            messages: 'Describe your project.',
+            name: 'Description',
         }
 
         {
             type: 'input',
-            messages: '?',
-            name: 'title',
+            messages: 'What are the installation instructions?',
+            name: 'Installation',
         }
 
         {
             type: 'input',
-            messages: '?',
-            name: 'title',
+            messages: 'What is the usage information?',
+            name: 'Usage',
         }
 
         {
             type: 'input',
-            messages: '?',
-            name: 'title',
+            messages: 'What contributions are there?',
+            name: 'Contribution',
         }
 
         {
             type: 'input',
-            messages: '?',
-            name: 'title',
+            messages: 'What tests were used?',
+            name: 'Test',
+        }
+
+        {
+            type: 'list',
+            messages: 'What license did you use?',
+            name: 'License',
+            choices: [],
+        }
+
+        {
+            type: 'input',
+            messages: 'What is your Github username?',
+            name: 'github',
+        }
+
+        {
+            type: 'input',
+            messages: 'What is your email?',
+            name: 'email',
         }
     ]
 
