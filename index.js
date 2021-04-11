@@ -1,64 +1,112 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const util = require('util');
+
+
+const writeFileAsync = util.promisify(fs.writeFile);
 
 //Questions for the ReadMe file to be generated
-inquirer.prompt(
-    [
+const promptUser = () => {
+  return inquirer.prompt([
         {
             type: 'input',
+            name: 'title',
             messages: 'What is your Project Title?',
-            name: 'Title',
-            validate: function
-        }
-
+        },
         {
             type: 'input',
+            name: 'description',
             messages: 'Describe your project.',
-            name: 'Description',
-        }
-
+            
+        },
         {
             type: 'input',
+            name: 'installation',
             messages: 'What are the installation instructions?',
-            name: 'Installation',
-        }
-
+            
+        },
         {
             type: 'input',
+            name: 'usage',
             messages: 'What is the usage information?',
-            name: 'Usage',
-        }
-
+            
+        },
         {
             type: 'input',
+            name: 'contribution',
             messages: 'What contributions are there?',
-            name: 'Contribution',
-        }
-
+            
+        },
         {
             type: 'input',
+            name: 'tests',
             messages: 'What tests were used?',
-            name: 'Test',
-        }
-
+            
+        },
         {
             type: 'list',
+            name: 'license',
             messages: 'What license did you use?',
-            name: 'License',
-            choices: [],
-        }
-
+            choices: ['The MIT License','The GPL License', 'Apache License', 'GMU License', 'N/A'],
+        },
         {
             type: 'input',
-            messages: 'What is your Github username?',
             name: 'github',
-        }
-
+            messages: 'What is your Github username?',
+            
+        },
         {
             type: 'input',
             messages: 'What is your email?',
             name: 'email',
-        }
-    ]
+            
+        },
+    ]);   
+};    
 
-)
+
+
+
+// Markdown template for the ReadMe
+const markdownTempmlate = {
+function (response){
+    return `
+ # ${response.title}
+
+ # Table of Contents
+   
+    * [Description](#description)
+    * [Installation](#instalation)
+    * [Usage](#usage)
+    * [Contribution](#contribution)
+    * [Tests](#tests)
+    * [License](license)
+   
+
+## Description 
+    ${respons.description}
+## Installation 
+    ${response.installation}
+## Usage 
+    ${response.usage}
+## Contribution 
+    ${response.contribution}
+## Tests 
+    ${response.tests}
+## License 
+    ${response.license}
+
+## Contact 
+* Github: ${respnse.github}
+*Email: ${response.email}; `
+
+    }
+}
+
+     fs.writeFile('Readme1.md',response,(err)=>{
+         if (err) {
+             console.log(err)
+         }
+         console.log("Readme had been generated.");
+     })
+ 
