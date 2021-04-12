@@ -68,12 +68,12 @@ const promptUser = () => {
 
 
 // Markdown template for the ReadMe
-const markdownTempmlate = {
-function (response){
-    return `
- # ${response.title}
 
- # Table of Contents
+const template = (markdownfile) => {
+ 
+ title
+
+# Table of Contents
    
     * [Description](#description)
     * [Installation](#instalation)
@@ -84,29 +84,31 @@ function (response){
    
 
 ## Description 
-    ${respons.description}
+    ${description}
 ## Installation 
-    ${response.installation}
+    ${installation}
 ## Usage 
-    ${response.usage}
+    ${usage}
 ## Contribution 
-    ${response.contribution}
+    ${contribution}
 ## Tests 
-    ${response.tests}
+    ${tests}
 ## License 
-    ${response.license}
+    ${license}
 
 ## Contact 
-* Github: ${respnse.github}
-*Email: ${response.email}; `
+* Github: ${github}
+*Email: ${email}; 
 
-    }
+createNewfile(title,template);
 }
 
-     fs.writeFile('Readme1.md',response,(err)=>{
+
+function createNewfile(fileName, data) {
+     fs.writeFile('Readme1.md',data,(err)=>{
          if (err) {
-             console.log(err)
+             console.log(err);
          }
          console.log("Readme had been generated.");
-     })
- 
+     });
+    } 
